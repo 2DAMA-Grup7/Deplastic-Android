@@ -1,4 +1,4 @@
-package org.deplastic.Deplastic.ui.home;
+package org.deplastic.Deplastic.ui.map;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -33,7 +33,7 @@ import org.deplastic.Deplastic.BuildConfig;
 import org.deplastic.Deplastic.MainActivity;
 import org.deplastic.Deplastic.R;
 
-public class HomeFragment extends Fragment {
+public class MapFragment extends Fragment {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int DEFAULT_ZOOM = 15;
@@ -49,10 +49,11 @@ public class HomeFragment extends Fragment {
     // The geographical location where the device is currently located. That is, the last-known location retrieved by the Fused Location Provider.
     private Location lastKnownLocation;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Initialize view
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_map, container, false);
         Context app_context = view.getContext();
 
         // Initialize map fragment
