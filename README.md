@@ -28,5 +28,5 @@ The aim of the challenge is to design and prototype products or objects with one
 - There must be a persistence layer managed by the server 
 
 ![https://www.plasticpreciosbcn.org/](https://media.discordapp.net/attachments/981559883033870358/1035453549565444107/logobcn.png)
-![https://www.poblenouurbandistrict.com/](https://media.discordapp.net/attachments/981559883033870358/1035453548978249778/poblenou.jpg)
+![https://www.poblenouurbandistrict.com/](https://media.discordapp.net/attachments/981559883033870358/1035464815268864010/poblenou-export.png)
 
