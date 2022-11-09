@@ -5,4 +5,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="marginTopTitleLogin">100dp</dimen>
+    <dimen name="marginTopTitleInput">175dp</dimen>
+    <dimen name="loginDimTextInput">55dp</dimen>
+    <dimen name="buttonLogMargTop">35dp</dimen>
 </resources>
