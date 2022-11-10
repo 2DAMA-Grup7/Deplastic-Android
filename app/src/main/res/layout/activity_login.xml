@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,26 +16,28 @@
 
     <EditText
         android:id="@+id/editText1"
-        android:layout_marginTop="@dimen/marginTopTitleInput"
         android:layout_width="match_parent"
         android:layout_height="@dimen/loginDimTextInput"
-        android:hint="@string/hint_usr" />
+        android:layout_marginTop="@dimen/marginTopTitleInput"
+        android:autofillHints="emailAddress"
+        android:hint="@string/hint_usr"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/loginDimTextInput"
         android:hint="@string/hint_pass"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:autofillHints="password" />
 
     <Button
         android:id="@+id/LoginButton"
         android:layout_marginTop="@dimen/buttonLogMargTop"
         android:layout_gravity="end"
-        android:onClick="onClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/button" />
 
 
 </LinearLayout>

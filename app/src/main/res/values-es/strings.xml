@@ -5,7 +5,7 @@
     <string name="hello_blank_fragment">calendar hehe</string>
     <string name="config">Error?</string>
     <string name="calendar">CALENDAR!</string>
-    <string name="map">espero que aqui vagi un mapa algun dia</string>
+    <string name="map">espero que aquí vagi un mapa algún día</string>
     <string name="menu_home">Home</string>
     <string name="menu_map">Map</string>
     <string name="menu_cal">Events</string>
@@ -14,4 +14,7 @@
     <string name="nav_header_desc">Navigation Header</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="hint_usr">E-mail</string>
+    <string name="hint_pass">Password</string>
+    <string name="button">Button</string>
 </resources>
