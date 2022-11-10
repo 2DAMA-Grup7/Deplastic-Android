@@ -14,4 +14,7 @@
     <string name="nav_header_desc">Navigation Header</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="hint_usr">E-mail</string>
+    <string name="hint_pass">Password</string>
+    <string name="button">Button</string>
 </resources>

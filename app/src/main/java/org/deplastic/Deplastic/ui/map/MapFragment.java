@@ -10,12 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,6 +37,8 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 import org.deplastic.Deplastic.BuildConfig;
 import org.deplastic.Deplastic.MainActivity;
 import org.deplastic.Deplastic.R;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MapFragment extends Fragment {
 
@@ -98,13 +105,21 @@ public class MapFragment extends Fragment {
                 // Get the current location of the device and set the position of the map.
                 getDeviceLocation(googleMap);
 
-                //TODO import variables from BD
-                LatLng sydney = new LatLng(-33.852, 151.211);
-                LatLng barcelona = new LatLng(-30.852, 150.211);
-                googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-                googleMap.addMarker(new MarkerOptions().position(barcelona).title("Marker in Barcelona"));
-                googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
+                // Get markers from api rest and show them all
+                RequestQueue queue = Volley.newRequestQueue(requireActivity().getApplicationContext());
+                String url = "https://deplastic.netlify.app/.netlify/functions/api/markers";
+                JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                        response -> {
+                            try {
+                                for (int i = 0; i < response.length(); i++) {
+                                    JSONObject marker = response.getJSONObject(i);
+                                    LatLng location = new LatLng(marker.getDouble("latitude"), marker.getDouble("longitude"));
+                                    googleMap.addMarker(new MarkerOptions().position(location).title(marker.getString("name")));
+                                }
+                            } catch (JSONException e) { e.printStackTrace(); }
+                        }, error -> Toast.makeText(requireActivity().getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show());
+                // Add the request to the RequestQueue.
+                queue.add(jsonArrayRequest);
             });
         }
         // Return view
