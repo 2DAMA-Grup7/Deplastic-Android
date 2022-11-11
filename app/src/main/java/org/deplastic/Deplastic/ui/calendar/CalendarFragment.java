@@ -24,8 +24,8 @@ public class CalendarFragment extends Fragment {
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textCalendar;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+
         return root;
     }
 

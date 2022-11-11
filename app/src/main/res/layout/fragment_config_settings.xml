@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.config.ConfigFragment">
+    android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/imageButton6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/exitbutton"
@@ -32,7 +31,8 @@
             android:layout_marginTop="100dp"
             android:contentDescription="@string/UserIconDesc"
             tools:ignore="ImageContrastCheck"
-            tools:src="@tools:sample/avatars[2]" />
+            tools:src="@tools:sample/avatars"
+            tools:srcCompat="@tools:sample/avatars[0]" />
 
         <TextView
             android:id="@+id/text_Config"
@@ -51,27 +51,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/MarginTop15dp"
-            android:text="@string/AddButtonText" />
+            android:text="@string/ProfilePicChangeButtonText" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/MarginTop15dp"
-            android:text="@string/BalanceButtonText" />
+            android:text="@string/UsernameChangeButtonText" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/MarginTop15dp"
-            android:text="@string/SettingsButtonText" />
+            android:text="@string/PasswordChangeButtonText" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/MarginTop15dp"
-            android:text="@string/LogoutButtonText" />
+            android:text="@string/ClientStatusChangeButtonText" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

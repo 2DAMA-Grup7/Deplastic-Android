@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.config.ConfigFragment">
+    android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/exitbutton"
@@ -16,6 +15,7 @@
         app:srcCompat="@drawable/quantum_ic_clear_grey600_24" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
@@ -32,7 +32,8 @@
             android:layout_marginTop="100dp"
             android:contentDescription="@string/UserIconDesc"
             tools:ignore="ImageContrastCheck"
-            tools:src="@tools:sample/avatars[2]" />
+            tools:src="@tools:sample/avatars"
+       />
 
         <TextView
             android:id="@+id/text_Config"
@@ -51,27 +52,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/MarginTop15dp"
-            android:text="@string/AddButtonText" />
+            android:text="@string/get_points_via_qr" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/MarginTop15dp"
-            android:text="@string/BalanceButtonText" />
+            android:text="@string/get_points_via_code" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/MarginTop15dp"
-            android:text="@string/SettingsButtonText" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/MarginTop15dp"
-            android:text="@string/LogoutButtonText" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

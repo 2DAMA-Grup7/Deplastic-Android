@@ -35,7 +35,6 @@ public class Login extends AppCompatActivity {
             try {
                 credentials.put("email", emailVal);
                 credentials.put("password", passwdVal);
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
