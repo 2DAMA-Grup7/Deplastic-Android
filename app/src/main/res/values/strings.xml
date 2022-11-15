@@ -17,4 +17,17 @@
     <string name="hint_usr">E-mail</string>
     <string name="hint_pass">Password</string>
     <string name="button">Button</string>
+    <string name="exitbutton">exit</string>
+    <string name="UserIconDesc">UserIconDesc</string>
+    <string name="Username">Username</string>
+    <string name="get_points_via_qr">Get Points via QR</string>
+    <string name="get_points_via_code">Get Points via Code</string>
+    <string name="ProfilePicChangeButtonText">ProfilePicChangeButtonText</string>
+    <string name="UsernameChangeButtonText">UsernameChangeButtonText</string>
+    <string name="PasswordChangeButtonText">PasswordChangeButtonText</string>
+    <string name="ClientStatusChangeButtonText">ClientStatusChangeButtonText</string>
+    <string name="AddButtonText">AddButtonText</string>
+    <string name="BalanceButtonText">BalanceButtonText</string>
+    <string name="SettingsButtonText">SettingsButtonText</string>
+    <string name="LogoutButtonText">LogoutButtonText</string>
 </resources>
