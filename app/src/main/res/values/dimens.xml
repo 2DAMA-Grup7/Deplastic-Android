@@ -10,4 +10,5 @@
     <dimen name="loginDimTextInput">55dp</dimen>
     <dimen name="buttonLogMargTop">35dp</dimen>
     <dimen name="MarginTop15dp">15dp</dimen>
+    <dimen name="ButtonDimen">120dp</dimen>
 </resources>

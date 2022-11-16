@@ -30,4 +30,7 @@
     <string name="BalanceButtonText">BalanceButtonText</string>
     <string name="SettingsButtonText">SettingsButtonText</string>
     <string name="LogoutButtonText">LogoutButtonText</string>
+    <string name="Loginbutton">Log In</string>
+    <string name="RegisterButton">Register</string>
+    <string name="regUsername">Username</string>
 </resources>

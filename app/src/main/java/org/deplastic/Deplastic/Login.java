@@ -35,6 +35,7 @@ public class Login extends AppCompatActivity {
             try {
                 credentials.put("email", emailVal);
                 credentials.put("password", passwdVal);
+                credentials.put("type", 0);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -59,6 +60,13 @@ public class Login extends AppCompatActivity {
                     }, Throwable::printStackTrace);
             queue.add(stringRequest);
         });
+
+        Button R = findViewById(org.deplastic.Deplastic.R.id.toRegisterButton);
+        R.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),Register.class);
+            startActivity(intent);
+        });
+        Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
     }
 }
 
