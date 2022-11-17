@@ -1,20 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
     <string name="hello_blank_fragment">calendar hehe</string>
     <string name="config">Error?</string>
     <string name="calendar">CALENDAR!</string>
-    <string name="map">espero que aquí vagi un mapa algún día</string>
-    <string name="menu_home">Home</string>
-    <string name="menu_map">Map</string>
-    <string name="menu_cal">Events</string>
-    <string name="menu_config">Configuration</string>
-    <string name="action_settings">Settings</string>
+    <string name="map">espero que aqui vagi un mapa algun dia</string>
+    <string name="menu_home">Inicio</string>
+    <string name="menu_map">Mapa</string>
+    <string name="menu_cal">Eventos</string>
+    <string name="menu_config">Configuración</string>
+    <string name="action_settings">Ajustes</string>
     <string name="nav_header_desc">Navigation Header</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="hint_usr">E-mail</string>
     <string name="hint_pass">Password</string>
     <string name="button">Button</string>
+    <string name="exitbutton">Salir</string>
+    <string name="UserIconDesc">UserIconDesc</string>
+    <string name="Username">Usuario</string>
+    <string name="get_points_via_qr">Consigue Puntos con un QR</string>
+    <string name="get_points_via_code">Consigue Puntos con un código</string>
+    <string name="ProfilePicChangeButtonText">Cambiar foto de perfil</string>
+    <string name="UsernameChangeButtonText">Cambiar nombre de usuario</string>
+    <string name="PasswordChangeButtonText">Cambiar contraseña</string>
+    <string name="ClientStatusChangeButtonText">Cambiar rol</string>
+    <string name="AddButtonText">AddButtonText</string>
+    <string name="BalanceButtonText">Saldo</string>
+    <string name="SettingsButtonText">Ajustes</string>
+    <string name="LogoutButtonText">Cerrar sesión</string>
+    <string name="Loginbutton">Iniciar sesión</string>
+    <string name="RegisterButton">Registrarse</string>
+    <string name="regUsername">Usuario</string>
+    <string name="EULA">Acuerdo de Licencia de Usuario Final</string>
+    <string name="deplasticlogo">DeplasticLogo</string>
+    <string name="don_t_have_an_account">¿No tienes cuenta?</string>
 </resources>
