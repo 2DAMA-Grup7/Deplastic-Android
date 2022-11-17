@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -21,7 +23,10 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register2);
         Button workingRegister = findViewById(R.id.RegisterButton);
-        workingRegister.setOnClickListener(v ->{
+        CheckBox EULABox = findViewById(R.id.checkBoxEULA);
+        
+        workingRegister.setOnClickListener(v -> {
+        if (EULABox.isChecked()) {
 
             EditText usernameReg = findViewById(R.id.registerUser);
             String usernameStr = usernameReg.getText().toString();
@@ -35,29 +40,33 @@ public class Register extends AppCompatActivity {
             JSONObject regData = new JSONObject();
 
             try {
-                regData.put("username",usernameStr)
-                regData.put("email",emailStr);
-                regData.put("password",passStr);
-                regData.put("type",0);
+                regData.put("username", usernameStr);
+                regData.put("email", emailStr);
+                regData.put("password", passStr);
+                regData.put("type", 0);
 
-            } catch (JSONException e){
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            requestQueue tail = Volley.newRequestQueue(getApplicationContext());
+            RequestQueue tail = Volley.newRequestQueue(getApplicationContext());
             String tailUrl = "https://deplastic.netlify.app/.netlify/functions/api/user";
-            JsonObjectR stringRequest = new JsonObjectRequest(Request.Method.POST,url,regData,
+            JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, tailUrl, regData,
                     response -> {
-                      try {
-                          Toast.makeText(getApplicationContext(),response.toString(),Toast.LENGTH_SHORT).show();
+                        try {
+                            Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                            if (response.getBoolean("error:false")) {
+                                Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Unable to register, try again", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }, Throwable::printStackTrace);
+            tail.add(stringRequest);
+        }});}}
 
 
 
 
-                    );
-
-
-
-        });
-    }
-}
