@@ -2,8 +2,11 @@ package org.deplastic.Deplastic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,6 +25,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         Button b = findViewById(R.id.LoginButton);
         b.setOnClickListener(v -> {
             EditText email = findViewById(R.id.editText1);
@@ -45,9 +49,10 @@ public class Login extends AppCompatActivity {
             JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url, credentials,
                     response -> {
                         try {
-                            Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
                             if (response.getBoolean("auth")) {
-                                Toast.makeText(getApplicationContext(), "Benvingut User.", Toast.LENGTH_SHORT).show();
+                                savetoPref(response);
+                                SharedPreferences sharedPref = Context.getSharedPreferences(getSharedPreferences("Credentials",Context.MODE_PRIVATE));
+                                Toast.makeText(getApplicationContext(), , Toast.LENGTH_SHORT).show();
                                 Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(newIntent);
                             }else {
@@ -59,6 +64,12 @@ public class Login extends AppCompatActivity {
                     }, Throwable::printStackTrace);
             queue.add(stringRequest);
         });
+    }
+    private void savetoPref(JSONObject response) {
+        SharedPreferences sharedpref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpref.edit();
+        editor.putString("Credentials", response.toString());
+        editor.apply();
     }
 }
 
