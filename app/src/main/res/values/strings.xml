@@ -34,4 +34,6 @@
     <string name="RegisterButton">Register</string>
     <string name="regUsername">Username</string>
     <string name="EULA">End User Agreement</string>
+    <string name="deplasticlogo">DeplasticLogo</string>
+    <string name="don_t_have_an_account">Don’t have an account?</string>
 </resources>
