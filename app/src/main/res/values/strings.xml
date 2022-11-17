@@ -33,4 +33,5 @@
     <string name="Loginbutton">Log In</string>
     <string name="RegisterButton">Register</string>
     <string name="regUsername">Username</string>
+    <string name="EULA">End User Agreement</string>
 </resources>
