@@ -88,7 +88,14 @@ private CheckBox alertCheckBox;
                         }
                     }, Throwable::printStackTrace);
             tail.add(stringRequest);
-        }});}
+        }
+        else{
+
+
+                        Toast.makeText(getApplicationContext(), "Must Agree with EULA", Toast.LENGTH_SHORT).show();
+
+        }
+                });}
 }
 
 
