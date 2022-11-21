@@ -51,8 +51,8 @@ public class Login extends AppCompatActivity {
                         try {
                             if (response.getBoolean("auth")) {
                                 savetoPref(response);
-                                SharedPreferences sharedPref = Context.getSharedPreferences(getSharedPreferences("Credentials",Context.MODE_PRIVATE));
-                                Toast.makeText(getApplicationContext(), , Toast.LENGTH_SHORT).show();
+                                SharedPreferences sharedPref = getSharedPreferences("Credentials",Context.MODE_PRIVATE);
+                                Toast.makeText(getApplicationContext(),sharedPref.toString(), Toast.LENGTH_SHORT).show();
                                 Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(newIntent);
                             }else {
