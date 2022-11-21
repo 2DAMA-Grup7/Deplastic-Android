@@ -47,10 +47,30 @@
             android:inputType="textPassword"
             android:autofillHints="password" />
 
+    <RadioGroup
+        android:id="@+id/radioGroupRoles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <RadioButton
+            android:id="@+id/radioButtonUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userRadioButton" />
+
+        <RadioButton
+            android:id="@+id/radioButtonArtist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/artistRaddioButton" />
+    </RadioGroup>
 
     <CheckBox
+        android:layout_gravity="center"
         android:id="@+id/checkBoxEULA"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/EULA" />
 
@@ -59,7 +79,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:text="@string/RegisterButton" />
+        android:text="@string/RegisterButton"
+        />
 
 
 

@@ -36,4 +36,8 @@
     <string name="EULA">End User Agreement</string>
     <string name="deplasticlogo">DeplasticLogo</string>
     <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="userRadioButton">User</string>
+    <string name="artistRaddioButton">Artist</string>
+    <string name="eulaAlert">EULA</string>
+    <string name="EULAcontents">lorem ipsum</string>
 </resources>
