@@ -35,7 +35,6 @@ public class Login extends AppCompatActivity {
             try {
                 credentials.put("email", emailVal);
                 credentials.put("password", passwdVal);
-                credentials.put("type", 0);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -66,8 +65,6 @@ public class Login extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),Register.class);
             startActivity(intent);
         });
-        Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(newIntent);
     }
 }
 

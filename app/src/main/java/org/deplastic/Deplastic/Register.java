@@ -2,6 +2,7 @@ package org.deplastic.Deplastic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -41,22 +42,23 @@ public class Register extends AppCompatActivity {
 
             try {
                 regData.put("username", usernameStr);
-                regData.put("email", emailStr);
                 regData.put("password", passStr);
-                regData.put("type", 0);
-
+                regData.put("email", emailStr);
+                regData.put("roles", "client");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             RequestQueue tail = Volley.newRequestQueue(getApplicationContext());
-            String tailUrl = "https://deplastic.netlify.app/.netlify/functions/api/user";
+            String tailUrl = "https://deplastic.netlify.app/.netlify/functions/api/register";
             JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, tailUrl, regData,
                     response -> {
                         try {
                             Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
-                            if (response.getBoolean("error:false")) {
+                            if (response.getBoolean("true")) {
                                 Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_SHORT).show();
+                                Intent newIntent = new Intent(getApplicationContext(), Login.class);
+                                startActivity(newIntent);
                             } else {
                                 Toast.makeText(getApplicationContext(), "Unable to register, try again", Toast.LENGTH_SHORT).show();
                             }
