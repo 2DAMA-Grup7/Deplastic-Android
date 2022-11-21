@@ -9,20 +9,40 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 
 import org.deplastic.Deplastic.databinding.ActivityMainBinding;
+import org.deplastic.Deplastic.ui.config.DataAdapter;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+
+    ArrayList<String> dataList;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        recyclerView=(RecyclerView) findViewById(R.id.RecyclerId);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+
+        dataList=new ArrayList<String>();
+
+        for (int i=0;i<50;i++){
+            dataList.add("Data # "+i);
+        }
+
+        DataAdapter adapter=new DataAdapter(dataList);
+        recyclerView.setAdapter(adapter);
 
         setSupportActionBar(binding.appBarMain.toolbar);
 

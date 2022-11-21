@@ -1,40 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:orientation="vertical"
+    tools:context=".ui.config.fragment_config_balance">
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/UserIcon"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/exitbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/quantum_ic_clear_grey600_24" />
+        android:layout_marginTop="100dp"
+        android:contentDescription="@string/UserIconDesc"
+        tools:ignore="ImageContrastCheck"
+        tools:src="@tools:sample/avatars" />
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/UserIcon"
-            tools:ignore="ImageContrastCheck"
-            tools:src="@tools:sample/avatars"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:contentDescription="@string/UserIconDesc"
-   />
-
-        <TextView
+    <TextView
             android:id="@+id/text_Config"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,193 +27,20 @@
             android:textAlignment="center"
             android:textSize="48sp" />
 
-        <ScrollView
+        <TextView
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Balance: *points*"
+            android:textAlignment="center"
+            android:textSize="48sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Balance: *points*"
-                    android:textAlignment="center"
-                    android:textSize="48sp" />
-
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/Events"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center|center_horizontal"
-                            android:text="Events"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:id="@+id/EventDate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center"
-                            android:text="Date"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:id="@+id/PointsGained"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center"
-                            android:text="Points received"
-                            android:textSize="24sp" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/Event1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center|center_horizontal"
-                            android:text="*Event*"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:id="@+id/EventDate1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center"
-                            android:text="*Date*"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:id="@+id/PointsGained1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center"
-                            android:text="*Points received*"
-                            android:textSize="24sp" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/Event2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center|center_horizontal"
-                            android:text="*Event*"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:id="@+id/EventDate2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center"
-                            android:text="*Date*"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:id="@+id/PointsGained2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center"
-                            android:text="*Points received*"
-                            android:textSize="24sp" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/Event3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center|center_horizontal"
-                            android:text="*Event*"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:id="@+id/EventDate3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center"
-                            android:text="*Date*"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:id="@+id/PointsGained3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center"
-                            android:text="*Points received*"
-                            android:textSize="24sp" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/Event4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center|center_horizontal"
-                            android:text="*Event*"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:id="@+id/EventDate4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center"
-                            android:text="*Date*"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:id="@+id/PointsGained4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/MarginTop15dp"
-                            android:gravity="center"
-                            android:text="*Points received*"
-                            android:textSize="24sp" />
-                    </TableRow>
-
-                </TableLayout>
-
-            </LinearLayout>
-        </ScrollView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecyclerId"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right" />
 
         <Button
             android:id="@+id/button3"
@@ -243,5 +51,5 @@
             android:gravity="center"
             android:text="Spend Points" />
 
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
