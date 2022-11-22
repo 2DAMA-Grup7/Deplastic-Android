@@ -35,4 +35,11 @@
     <string name="EULA">Acuerdo de Licencia de Usuario Final</string>
     <string name="deplasticlogo">DeplasticLogo</string>
     <string name="don_t_have_an_account">¿No tienes cuenta?</string>
+
+    <string name="userRadioButton">Usuario</string>
+    <string name="artistRaddioButton">Artista</string>
+    <string name="eulaAlert">EULA</string>
+    <string name="EULAcontents">lorem ipsum</string>
+    <string name="menu_tenda">Tienda</string>
+
 </resources>
