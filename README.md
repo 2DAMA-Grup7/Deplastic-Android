@@ -6,10 +6,10 @@ The objective is to design, implement and present a solution to the challenge pr
 
 ### Table of Contents
 
-- [Resume](#resume)
+- [Overview](#overview)
 - [Rules](#rules)
 
-### Resume
+### Overview
 
 One of the objectives of [CENTRINNO](https://www.centrinno.eu/) is to promote educational programs and training for new professions, equipped to design, create and manage services and products that respond to the social, economic and ecological challenges of the 21st century. Both the training programs and the challenges can be connected to the local reality of the pilot project in Barcelona, in the district of Sant Martí, or replicate the results beyond.
 
