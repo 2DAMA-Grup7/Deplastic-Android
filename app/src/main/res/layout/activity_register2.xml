@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Register">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/marginTopTitleLogin"
+            android:text="@string/app_name" />
+    <ImageView
+        android:contentDescription="@string/deplasticlogo"
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo" />
+    <EditText
+        android:id="@+id/registerUser"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/loginDimTextInput"
+        android:layout_marginTop="@dimen/marginTopTitleInput"
+        android:autofillHints="emailAddress"
+        android:hint="@string/regUsername"
+        android:inputType="text" />
+
+        <EditText
+            android:id="@+id/registerEmail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/loginDimTextInput"
+            android:layout_marginTop="1dp"
+            android:autofillHints="emailAddress"
+            android:hint="@string/hint_usr"
+            android:inputType="textEmailAddress" />
+
+
+        <EditText
+            android:id="@+id/registerPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/loginDimTextInput"
+            android:hint="@string/hint_pass"
+            android:inputType="textPassword"
+            android:autofillHints="password" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupRoles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <RadioButton
+            android:id="@+id/radioButtonUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userRadioButton" />
+
+        <RadioButton
+            android:id="@+id/radioButtonArtist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/artistRaddioButton" />
+    </RadioGroup>
+
+    <CheckBox
+        android:layout_gravity="center"
+        android:id="@+id/checkBoxEULA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/EULA" />
+
+    <Button
+        android:id="@+id/RegisterButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="@string/RegisterButton"
+        />
+
+
+
+
+</LinearLayout>

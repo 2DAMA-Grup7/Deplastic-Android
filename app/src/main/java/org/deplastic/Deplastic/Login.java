@@ -62,6 +62,12 @@ public class Login extends AppCompatActivity {
                     }, Throwable::printStackTrace);
             queue.add(stringRequest);
         });
+
+        Button R = findViewById(org.deplastic.Deplastic.R.id.toRegisterButton);
+        R.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),Register.class);
+            startActivity(intent);
+        });
     }
     private void savetoPref(JSONObject response) {
         SharedPreferences sharedpref = getPreferences(Context.MODE_PRIVATE);
