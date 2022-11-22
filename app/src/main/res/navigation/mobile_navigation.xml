@@ -22,4 +22,10 @@
         android:name="org.deplastic.Deplastic.ui.config.ConfigFragment"
         android:label="@string/menu_config"
         tools:layout="@layout/fragment_config" />
+
+    <fragment
+        android:id="@+id/nav_tenda"
+        android:name="org.deplastic.Deplastic.ui.tenda.TendaFragment"
+        android:label="@string/menu_tenda"
+        tools:layout="@layout/fragment_tenda" />
 </navigation>

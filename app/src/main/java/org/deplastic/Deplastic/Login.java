@@ -51,8 +51,6 @@ public class Login extends AppCompatActivity {
                         try {
                             if (response.getBoolean("auth")) {
                                 savetoPref(response);
-                                SharedPreferences sharedPref = getSharedPreferences("Credentials",Context.MODE_PRIVATE);
-                                Toast.makeText(getApplicationContext(),sharedPref.toString(), Toast.LENGTH_SHORT).show();
                                 Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(newIntent);
                             }else {
@@ -69,8 +67,8 @@ public class Login extends AppCompatActivity {
         SharedPreferences sharedpref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpref.edit();
         editor.putString("Credentials", response.toString());
-        editor.apply();
-    }
+
+        editor.apply();}
 }
 
 

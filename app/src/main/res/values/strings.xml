@@ -30,4 +30,6 @@
     <string name="BalanceButtonText">BalanceButtonText</string>
     <string name="SettingsButtonText">SettingsButtonText</string>
     <string name="LogoutButtonText">LogoutButtonText</string>
+    <string name="menu_config_balance">config_balance</string>
+    <string name="menu_tenda">Shop</string>
 </resources>
