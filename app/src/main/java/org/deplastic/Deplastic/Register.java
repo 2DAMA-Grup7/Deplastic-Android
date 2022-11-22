@@ -22,7 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Register extends AppCompatActivity {
-private CheckBox alertCheckBox;
+    private CheckBox alertCheckBox;
 
     @Override
 
@@ -44,58 +44,89 @@ private CheckBox alertCheckBox;
 
         });
 
-                workingRegister.setOnClickListener(v -> {
-        if (EULABox.isChecked()) {
+        workingRegister.setOnClickListener(v -> {
+            if (EULABox.isChecked()) {
 
-            EditText usernameReg = findViewById(R.id.registerUser);
-            String usernameStr = usernameReg.getText().toString();
+                EditText usernameReg = findViewById(R.id.registerUser);
+                String usernameStr = usernameReg.getText().toString();
 
-            EditText emailReg = findViewById(R.id.registerEmail);
-            String emailStr = emailReg.getText().toString();
+                EditText emailReg = findViewById(R.id.registerEmail);
+                String emailStr = emailReg.getText().toString();
 
-            EditText passReg = findViewById(R.id.registerPassword);
-            String passStr = passReg.getText().toString();
+                EditText passReg = findViewById(R.id.registerPassword);
+                String passStr = passReg.getText().toString();
 
+                RadioButton ClientRadio = findViewById(R.id.radioButtonUser);
+                if (ClientRadio.isChecked()) {
+                    String rolStr = "client";
+                    JSONObject regData = new JSONObject();
+                    try {
+                        regData.put("username", usernameStr);
+                        regData.put("password", passStr);
+                        regData.put("email", emailStr);
+                        regData.put("roles", rolStr);
 
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-            JSONObject regData = new JSONObject();
+                    RequestQueue tail = Volley.newRequestQueue(getApplicationContext());
+                    String tailUrl = "https://deplastic.netlify.app/.netlify/functions/api/register";
+                    JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, tailUrl, regData,
+                            response -> {
+                                try {
+                                    Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                                    if (response.getBoolean("success")) {
+                                        Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_SHORT).show();
+                                        Intent newIntent = new Intent(getApplicationContext(), Login.class);
+                                        startActivity(newIntent);
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Unable to register, try again", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }, Throwable::printStackTrace);
+                    tail.add(stringRequest);
+                }
+                else {
+                    String rolStr = "artist";
+                    JSONObject regData = new JSONObject();
+                    try {
+                        regData.put("username", usernameStr);
+                        regData.put("password", passStr);
+                        regData.put("email", emailStr);
+                        regData.put("roles", rolStr);
 
-            try {
-                regData.put("username", usernameStr);
-                regData.put("password", passStr);
-                regData.put("email", emailStr);
-                regData.put("roles","client");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-            } catch (JSONException e) {
-                e.printStackTrace();
+                    RequestQueue tail = Volley.newRequestQueue(getApplicationContext());
+                    String tailUrl = "https://deplastic.netlify.app/.netlify/functions/api/register";
+                    JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, tailUrl, regData,
+                            response -> {
+                                try {
+                                    Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                                    if (response.getBoolean("success")) {
+                                        Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_SHORT).show();
+                                        Intent newIntent = new Intent(getApplicationContext(), Login.class);
+                                        startActivity(newIntent);
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Unable to register, try again", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }, Throwable::printStackTrace);
+                    tail.add(stringRequest);
+
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "Must Agree with EULA", Toast.LENGTH_SHORT).show();
             }
-
-            RequestQueue tail = Volley.newRequestQueue(getApplicationContext());
-            String tailUrl = "https://deplastic.netlify.app/.netlify/functions/api/register";
-            JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, tailUrl, regData,
-                    response -> {
-                        try {
-                            Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
-                            if (response.getBoolean("true")) {
-                                Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_SHORT).show();
-                                Intent newIntent = new Intent(getApplicationContext(), Login.class);
-                                startActivity(newIntent);
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Unable to register, try again", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }, Throwable::printStackTrace);
-            tail.add(stringRequest);
-        }
-        else{
-
-
-                        Toast.makeText(getApplicationContext(), "Must Agree with EULA", Toast.LENGTH_SHORT).show();
-
-        }
-                });}
+        });
+    }
 }
 
 
