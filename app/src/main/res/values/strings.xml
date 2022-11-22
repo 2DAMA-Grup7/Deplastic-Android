@@ -30,4 +30,16 @@
     <string name="BalanceButtonText">BalanceButtonText</string>
     <string name="SettingsButtonText">SettingsButtonText</string>
     <string name="LogoutButtonText">LogoutButtonText</string>
+    <string name="Loginbutton">Log In</string>
+    <string name="RegisterButton">Register</string>
+    <string name="regUsername">Username</string>
+    <string name="EULA">End User Agreement</string>
+    <string name="deplasticlogo">DeplasticLogo</string>
+    <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="userRadioButton">User</string>
+    <string name="artistRaddioButton">Artist</string>
+    <string name="eulaAlert">EULA</string>
+    <string name="EULAcontents">lorem ipsum</string>
+    <string name="menu_config_balance" translatable="false">config_balance</string>
+    <string name="menu_tenda">Shop</string>
 </resources>

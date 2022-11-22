@@ -54,7 +54,7 @@
             android:text="@string/AddButtonText" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/BalanceButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/MarginTop15dp"
@@ -68,7 +68,7 @@
             android:text="@string/SettingsButtonText" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/logoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/MarginTop15dp"
