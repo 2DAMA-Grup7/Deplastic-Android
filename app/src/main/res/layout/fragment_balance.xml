@@ -27,10 +27,12 @@
         android:textAlignment="center"
         android:textSize="48sp" />
 
-    <View
-        android:id="@+id/view"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        tools:itemCount="15"
+
+        />
 
 
 </LinearLayout>
