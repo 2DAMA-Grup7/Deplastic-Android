@@ -1,4 +1,4 @@
-package org.deplastic.Deplastic;
+package org.deplastic.Deplastic.Credentials;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.deplastic.Deplastic.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,7 +29,7 @@ public class Register extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register2);
+        setContentView(R.layout.activity_register);
         Button workingRegister = findViewById(R.id.RegisterButton);
         CheckBox EULABox = findViewById(R.id.checkBoxEULA);
         alertCheckBox = (CheckBox) findViewById(R.id.checkBoxEULA);

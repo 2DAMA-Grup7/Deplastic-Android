@@ -1,4 +1,4 @@
-package org.deplastic.Deplastic;
+package org.deplastic.Deplastic.Credentials;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,6 +15,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.deplastic.Deplastic.MainActivity;
+import org.deplastic.Deplastic.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 

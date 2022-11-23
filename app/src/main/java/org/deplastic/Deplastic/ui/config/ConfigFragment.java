@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.deplastic.Deplastic.Login;
+import org.deplastic.Deplastic.Credentials.Login;
 import org.deplastic.Deplastic.R;
 import org.deplastic.Deplastic.databinding.FragmentConfigBinding;
 import org.deplastic.Deplastic.ui.config.balance.BalanceFragment;

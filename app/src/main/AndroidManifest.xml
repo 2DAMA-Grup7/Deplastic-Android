@@ -17,7 +17,7 @@
         android:theme="@style/Theme.Deplastic"
         tools:targetApi="31">
         <activity
-            android:name=".Register"
+            android:name=".Credentials.Register"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -32,7 +32,7 @@
         </activity>
 
         <activity
-            android:name=".Login"
+            android:name=".Credentials.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

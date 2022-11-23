@@ -42,4 +42,5 @@
     <string name="EULAcontents">lorem ipsum</string>
     <string name="menu_config_balance" translatable="false">config_balance</string>
     <string name="menu_tenda">Shop</string>
+    <string name="Balance">Balance</string>
 </resources>
