@@ -26,12 +26,6 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
 
-        /*sp.edit().putString("name",emailval);
-        sp.edit().putString("password",passwdVal);
-
-        sp.getString("name","");
-        sp.getString("password","");*/
-
         if(sp.getBoolean("logged",false)){
             Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(newIntent);
@@ -67,6 +61,9 @@ public class Login extends AppCompatActivity {
                                 Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(newIntent);
                                 sp.edit().putBoolean("logged",true).apply();
+                             /*   sp.edit().putString("email",emailVal);
+                                sp.edit().putString("password",passwdVal);
+                                sp.edit().putString("auth",);    */
                             }else {
                                 Toast.makeText(getApplicationContext(), "Wrong user or password, try again.", Toast.LENGTH_SHORT).show();
                             }
