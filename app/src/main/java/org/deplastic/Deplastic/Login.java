@@ -50,8 +50,8 @@ public class Login extends AppCompatActivity {
                     response -> {
                         try {
                             if (response.getBoolean("auth")) {
-                                savetoPref(response);
-                                Toast.makeText(getApplicationContext(), readfromPref(), Toast.LENGTH_LONG).show();
+
+                                Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_LONG).show();
                                 Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(newIntent);
                             }else {
