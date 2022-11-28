@@ -28,11 +28,9 @@
         android:textSize="48sp" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/balanceRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:itemCount="15"
-
-        />
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>
