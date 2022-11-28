@@ -19,21 +19,22 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.deplastic.Deplastic.MyRecyclerViewAdapter;
+import org.deplastic.Deplastic.Adapter;
 import org.deplastic.Deplastic.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class TendaFragment extends Fragment implements MyRecyclerViewAdapter.ItemClickListener {
+public class TendaFragment extends Fragment {
 
     private TendaViewModel mViewModel;
 
-    MyRecyclerViewAdapter adapter;
+    ArrayList<String> ImgUrl= new ArrayList<>();
+    RecyclerView recyclerView;
+    LinearLayoutManager Manager;
+    Adapter adapter;
 
 
     public static TendaFragment newInstance() {
@@ -47,7 +48,7 @@ public class TendaFragment extends Fragment implements MyRecyclerViewAdapter.Ite
 
         // data to populate the RecyclerView with
 
-        ArrayList<String> productNames = new ArrayList<>();
+
 
         // Get markers from api rest and show them all
         RequestQueue queue = Volley.newRequestQueue(requireActivity().getApplicationContext());
@@ -57,14 +58,17 @@ public class TendaFragment extends Fragment implements MyRecyclerViewAdapter.Ite
                     try {
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject product = response.getJSONObject(i);
-                            productNames.add(product.getString("nom"));
+                            ImgUrl.add(product.getString("url"));
+
                         }
-                        // set up the RecyclerView
-                        RecyclerView recyclerView = view.findViewById(R.id.Products);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                        adapter = new MyRecyclerViewAdapter(getContext(), productNames);
-                        adapter.setClickListener(this);
+
+                        this.recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
+                        Manager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(Manager);
+                        adapter = new Adapter(ImgUrl, getContext());
                         recyclerView.setAdapter(adapter);
+
+
 
                     } catch (JSONException e) { e.printStackTrace(); }
                 }, error -> Toast.makeText(requireActivity().getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show());
@@ -83,8 +87,4 @@ public class TendaFragment extends Fragment implements MyRecyclerViewAdapter.Ite
         // TODO: Use the ViewModel
     }
 
-    @Override
-    public void onItemClick(View view, int position) {
-        Toast.makeText(getContext(), "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
-    }
 }

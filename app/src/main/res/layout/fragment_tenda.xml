@@ -6,7 +6,7 @@
     tools:context=".ui.tenda.TendaFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Products"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
