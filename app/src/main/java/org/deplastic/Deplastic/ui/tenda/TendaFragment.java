@@ -32,6 +32,7 @@ public class TendaFragment extends Fragment {
     private TendaViewModel mViewModel;
 
     ArrayList<String> ImgUrl= new ArrayList<>();
+    ArrayList<String> productName= new ArrayList<>();
     RecyclerView recyclerView;
     LinearLayoutManager Manager;
     Adapter adapter;
@@ -59,13 +60,14 @@ public class TendaFragment extends Fragment {
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject product = response.getJSONObject(i);
                             ImgUrl.add(product.getString("url"));
+                            productName.add(product.getString("nom"));
 
                         }
 
                         this.recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
                         Manager = new LinearLayoutManager(getContext());
                         recyclerView.setLayoutManager(Manager);
-                        adapter = new Adapter(ImgUrl, getContext());
+                        adapter = new Adapter(ImgUrl,productName, getContext());
                         recyclerView.setAdapter(adapter);
 
 

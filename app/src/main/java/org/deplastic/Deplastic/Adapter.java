@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,10 +16,12 @@ import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     ArrayList<String> urls;
+    ArrayList<String> names;
     Context context;
     //constructor
-    public Adapter(ArrayList<String> ImgUrl, Context context_)
+    public Adapter(ArrayList<String> ImgUrl,ArrayList<String> Names, Context context_)
     {
+        this.names = Names;
         this.urls = ImgUrl;
         this.context = context_;
     }
@@ -26,14 +29,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
         private ImageView image;
+        private TextView name;
 
         public ViewHolder(View v)
         {
             super(v);
             image =(ImageView)v.findViewById(R.id.img);
+            name=(TextView)v.findViewById(R.id.ProductName) ;
         }
 
+
         public ImageView getImage(){ return this.image;}
+        public TextView getName(){return this.name;}
+
     }
 
     @Override
@@ -47,10 +55,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position)
     {
+        System.out.println(names.get(position));
+
+        holder.getName().setText(names.get(position));
+
         Glide.with(this.context)
                 .load(urls.get(position))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.getImage());
+
     }
 
     @Override
