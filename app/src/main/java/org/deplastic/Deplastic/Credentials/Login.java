@@ -1,7 +1,5 @@
 package org.deplastic.Deplastic.Credentials;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +7,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,9 +25,12 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
 
+        if(sp.getBoolean("logged",false)){
+            Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(newIntent);
+        }
         setContentView(R.layout.activity_login);
 
         Button b = findViewById(R.id.LoginButton);
@@ -56,16 +59,12 @@ public class Login extends AppCompatActivity {
                             if (response.getBoolean("auth")) {
 
                                 Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_LONG).show();
-
-                                sp.edit().putBoolean("logged",true).apply();
-                                sp.edit().putString("email",emailVal).apply();
-                                sp.edit().putString("token",response.getString("token")).apply();
-                                /*sp.edit().putString("password",passwdVal);
-                                sp.edit().putString("auth",);*/
-
                                 Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(newIntent);
-
+                                sp.edit().putBoolean("logged",true).apply();
+                             /*   sp.edit().putString("email",emailVal);
+                                sp.edit().putString("password",passwdVal);
+                                sp.edit().putString("auth",);    */
                             }else {
                                 Toast.makeText(getApplicationContext(), "Wrong user or password, try again.", Toast.LENGTH_SHORT).show();
                             }
@@ -81,9 +80,21 @@ public class Login extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),Register.class);
             startActivity(intent);
         });
-
     }
 
+    private String readfromPref() {
+        SharedPreferences prefs = this.getSharedPreferences("general_settings", Context.MODE_PRIVATE);
+        String lanSettings = prefs.getString("Credentials", null);
+
+        return lanSettings;
+    }
+
+    private void savetoPref(JSONObject response) {
+        SharedPreferences sharedpref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpref.edit();
+        editor.putString("Credentials", response.toString());
+
+        editor.apply();}
 }
 
 
