@@ -92,6 +92,7 @@ public class Login extends AppCompatActivity {
                                 sp.edit()
                                         .putString("token", response.getString("token"))
                                         .putString("email", emailVal)
+                                        .putString("username", response.getString("username"))
                                         .apply();
                             } else {
                                 Toast.makeText(getApplicationContext(), "Wrong user or password, try again.", Toast.LENGTH_SHORT).show();

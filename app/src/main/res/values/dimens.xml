@@ -12,4 +12,5 @@
     <dimen name="MarginTop15dp">15dp</dimen>
     <dimen name="ButtonDimen">120dp</dimen>
     <dimen name="CalendarMarginTop">155dp</dimen>
+    <dimen name="MarginTop55dp">55dp</dimen>
 </resources>

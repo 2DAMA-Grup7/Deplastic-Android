@@ -49,25 +49,11 @@
             android:textSize="48sp" />
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/MarginTop15dp"
-            android:text="@string/AddButtonText" />
-
-        <Button
             android:id="@+id/BalanceButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/MarginTop15dp"
+            android:layout_marginTop="@dimen/MarginTop55dp"
             android:text="@string/BalanceButtonText" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/MarginTop15dp"
-            android:text="@string/SettingsButtonText" />
 
         <Button
             android:id="@+id/logoutButton"
@@ -75,5 +61,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/MarginTop15dp"
             android:text="@string/LogoutButtonText" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

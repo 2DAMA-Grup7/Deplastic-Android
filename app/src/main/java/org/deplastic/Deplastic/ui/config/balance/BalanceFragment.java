@@ -36,16 +36,18 @@ public class BalanceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_balance, container, false);
 
+        productName.add("KG" + "                " + "Points");
+
         //TODO
         // Get points from api rest and show them all
         RequestQueue queue = Volley.newRequestQueue(requireActivity().getApplicationContext());
-        String url = "https://deplastic.netlify.app/.netlify/functions/api/TODO";
+        String url = "https://deplastic.netlify.app/.netlify/functions/api/transaction";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 response -> {
                     try {
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject balance = response.getJSONObject(i);
-                            productName.add(balance.getString("TODO"));
+                            productName.add(balance.getString("kg")+"                "+balance.getString("points"));
                         }
                         this.recyclerView = (RecyclerView)view.findViewById(R.id.balanceRecyclerView);
                         Manager = new LinearLayoutManager(getContext());

@@ -27,9 +27,16 @@ public class ConfigFragment extends Fragment {
     private SharedPreferences sharedPreferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ConfigViewModel configViewModel = new ViewModelProvider(this).get(ConfigViewModel.class);
         binding = FragmentConfigBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        sharedPreferences = requireContext().getSharedPreferences("login", MODE_PRIVATE);
+
+
+        TextView username = root.findViewById(R.id.text_Config);
+        username.setText(sharedPreferences.getString("username","ERROR"));
+
+
         Button balanceButton = root.findViewById(R.id.BalanceButton);
         balanceButton.setOnClickListener(v -> {
             Fragment fragment = new BalanceFragment();
@@ -40,16 +47,12 @@ public class ConfigFragment extends Fragment {
         });
         Button logoutButton= root.findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(v -> {
-            sharedPreferences = requireContext().getSharedPreferences("login", MODE_PRIVATE);
             sharedPreferences.edit().remove("token").apply();
             Intent newIntent = new Intent(getContext(), Login.class);
             startActivity(newIntent);
         });
-        final TextView textView = binding.textConfig;
-        configViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
