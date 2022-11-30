@@ -1,5 +1,7 @@
 package org.deplastic.Deplastic.ui.tenda.producte;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,6 +32,7 @@ import org.json.JSONObject;
 public class ProductFragment extends Fragment {
 
     static int prodNum;
+
     public ProductFragment(int position) {
         prodNum = position;
     }
@@ -66,13 +69,12 @@ public class ProductFragment extends Fragment {
         Button buyButton = view.findViewById(R.id.buyButton);
 
         JSONObject purchase = new JSONObject();
-        SharedPreferences sp = requireActivity().getSharedPreferences("email", Context.MODE_PRIVATE);
-        String emailVal = sp.getString("email", "");
+        SharedPreferences sp = requireActivity().getSharedPreferences("login", MODE_PRIVATE);
+        String email = sp.getString("email", "ERROR IDENTIFICANT EL USUARI");
         int prodId = prodNum;
-
         try {
-            purchase.put("email", emailVal);
-            purchase.put("article", prodId);
+            purchase.put("email", email);
+            purchase.put("prodId", prodNum);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -82,7 +84,7 @@ public class ProductFragment extends Fragment {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, newURL, purchase,
                     response -> {
                         try {
-                            Toast.makeText(requireActivity().getApplicationContext(), response.getString("response"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireActivity().getApplicationContext(), response.getString("success"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

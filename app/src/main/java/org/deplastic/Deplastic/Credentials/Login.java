@@ -29,6 +29,7 @@ public class Login extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
         JSONObject token = new JSONObject();
+
         try {
             token.put("token", sp.getString("token", ""));
             token.put("email", sp.getString("email", ""));
@@ -52,10 +53,7 @@ public class Login extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }, Throwable::printStackTrace);
-
         queue.add(tokenRequest);
-
-
     }
 
     private void init_form() {
