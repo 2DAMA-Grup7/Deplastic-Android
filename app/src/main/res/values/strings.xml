@@ -43,4 +43,8 @@
     <string name="menu_config_balance" translatable="false">config_balance</string>
     <string name="menu_tenda">Shop</string>
     <string name="Balance">Balance</string>
+    <string name="ProdName">Default</string>
+    <string name="ProdDescription">Description default</string>
+    <string name="Cost">DefaultPointCost</string>
+    <string name="BUY">Buy</string>
 </resources>

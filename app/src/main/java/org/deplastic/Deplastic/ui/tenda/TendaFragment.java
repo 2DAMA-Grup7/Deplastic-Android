@@ -1,5 +1,7 @@
 package org.deplastic.Deplastic.ui.tenda;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -22,6 +24,8 @@ import com.android.volley.toolbox.Volley;
 
 import org.deplastic.Deplastic.Adapter;
 import org.deplastic.Deplastic.R;
+import org.deplastic.Deplastic.ui.config.balance.BalanceFragment;
+import org.deplastic.Deplastic.ui.tenda.producte.ProductFragment;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -84,15 +88,13 @@ public class TendaFragment extends Fragment implements Adapter.ItemClickListener
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(TendaViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
-    @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(getContext(), "You clicked " + adapter.getItemId(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Fragment fragment = new ProductFragment(position);
+
+        FragmentManager fm = getParentFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.nav_host_fragment_content_main, fragment);
+        transaction.commit();
     }
 
 }
