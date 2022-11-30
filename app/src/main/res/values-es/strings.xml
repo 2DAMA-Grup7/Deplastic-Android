@@ -4,7 +4,7 @@
     <string name="hello_blank_fragment">calendar hehe</string>
     <string name="config">Error?</string>
     <string name="calendar">CALENDAR!</string>
-    <string name="map">espero que aqui vagi un mapa algun dia</string>
+    <string name="map">espero que aquí vagi un mapa algún día</string>
     <string name="menu_home">Inicio</string>
     <string name="menu_map">Mapa</string>
     <string name="menu_cal">Eventos</string>
@@ -35,11 +35,14 @@
     <string name="EULA">Acuerdo de Licencia de Usuario Final</string>
     <string name="deplasticlogo">DeplasticLogo</string>
     <string name="don_t_have_an_account">¿No tienes cuenta?</string>
-
     <string name="userRadioButton">Usuario</string>
     <string name="artistRaddioButton">Artista</string>
     <string name="eulaAlert">EULA</string>
     <string name="EULAcontents">lorem ipsum</string>
     <string name="menu_tenda">Tienda</string>
+    <string name="ProdName">Default</string>
+    <string name="ProdDescription">Description default</string>
+    <string name="Cost">DefaultPointCost</string>
+    <string name="BUY">Buy</string>
 
 </resources>

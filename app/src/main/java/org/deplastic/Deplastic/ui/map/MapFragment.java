@@ -26,13 +26,11 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.net.PlacesClient;
 
 import org.deplastic.Deplastic.BuildConfig;
 import org.deplastic.Deplastic.MainActivity;
@@ -46,7 +44,6 @@ public class MapFragment extends Fragment {
     private static final int DEFAULT_ZOOM = 15;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     // Keys for storing activity state.
-    private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
     // A default location (Sydney, Australia) and default zoom to use when location permission is not granted.
     private final LatLng defaultLocation = new LatLng(-33.8523341, 151.2106085);
@@ -68,12 +65,9 @@ public class MapFragment extends Fragment {
 
         if (savedInstanceState != null) {
             lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-            CameraPosition cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
 
         Places.initialize(app_context.getApplicationContext(), BuildConfig.MAPS_API_KEY);
-        // The entry point to the Places API.
-        PlacesClient placesClient = Places.createClient(app_context);
         // Construct a FusedLocationProviderClient.
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(app_context);
 
