@@ -18,7 +18,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.deplastic.Deplastic.R;
-import org.deplastic.Deplastic.databinding.FragmentConfigBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,8 +25,6 @@ import java.util.ArrayList;
 
 public class BalanceFragment extends Fragment {
 
-    private BalanceViewModel mViewModel;
-    private FragmentConfigBinding binding;
 
     ArrayList<String> productName= new ArrayList<>();
     RecyclerView recyclerView;
@@ -36,8 +33,7 @@ public class BalanceFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_balance, container, false);
 
         //TODO

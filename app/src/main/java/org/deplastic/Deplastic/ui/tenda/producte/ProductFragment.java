@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -29,51 +28,33 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProductFragment extends Fragment {
-    static int prodnum;
-    private ProductViewModel mViewModel;
 
+    static int prodNum;
     public ProductFragment(int position) {
-        prodnum = position;
+        prodNum = position;
     }
-
-    public static ProductFragment newInstance() {
-        return new ProductFragment(prodnum);
-    }
-
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        ProductViewModel productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_product, container, false);
-
-
-        /*
-        TextView prodName  = getView().findViewById(R.id.NomProd);
-        TextView prodDesc  = getView().findViewById(R.id.ProdDescription);
-        TextView pointCost  = getView().findViewById(R.id.PointCost);
-        ImageView imatge = getView().findViewById(R.id.imatgeProd);
-        */
-
         RequestQueue queue = Volley.newRequestQueue(requireActivity().getApplicationContext());
         String url = "https://deplastic.netlify.app/.netlify/functions/api/products";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 response -> {
-
-                    TextView prodName = getView().findViewById(R.id.NomProd);
-                    TextView prodDesc = getView().findViewById(R.id.ProdDescription);
-                    TextView pointCost = getView().findViewById(R.id.PointCost);
-                    ImageView imatge = getView().findViewById(R.id.imatgeProd);
-
+                    TextView prodName = requireView().findViewById(R.id.NomProd);
+                    TextView prodDesc = requireView().findViewById(R.id.ProdDescription);
+                    TextView pointCost = requireView().findViewById(R.id.PointCost);
+                    //ImageView image = requireView().findViewById(R.id.imatgeProd);
                     try {
-                        JSONObject product = response.getJSONObject(prodnum);
+                        JSONObject product = response.getJSONObject(prodNum);
                         prodName.setText(product.getString("nom"));
                         prodDesc.setText(product.getString("description"));
                         pointCost.setText(product.getString("price"));
                         Glide.with(getContext())
                                 .load(product.getString("url"))
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                .into((ImageView) getView().findViewById(R.id.imatgeProd));
+                                .into((ImageView) requireView().findViewById(R.id.imatgeProd));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -84,21 +65,21 @@ public class ProductFragment extends Fragment {
 
         Button buyButton = view.findViewById(R.id.buyButton);
 
-        JSONObject compra = new JSONObject();
+        JSONObject purchase = new JSONObject();
         SharedPreferences sp = requireActivity().getSharedPreferences("email", Context.MODE_PRIVATE);
         String emailVal = sp.getString("email", "");
-        int prodId = prodnum;
+        int prodId = prodNum;
 
         try {
-            compra.put("email", emailVal);
-            compra.put("article", prodId);
+            purchase.put("email", emailVal);
+            purchase.put("article", prodId);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         buyButton.setOnClickListener(v -> {
-            String newurl = "https://deplastic.netlify.app/.netlify/functions/api/receipt";
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, newurl, compra,
+            String newURL = "https://deplastic.netlify.app/.netlify/functions/api/receipt";
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, newURL, purchase,
                     response -> {
                         try {
                             Toast.makeText(requireActivity().getApplicationContext(), response.getString("response"), Toast.LENGTH_SHORT).show();

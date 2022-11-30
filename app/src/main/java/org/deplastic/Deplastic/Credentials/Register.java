@@ -1,17 +1,15 @@
 package org.deplastic.Deplastic.Credentials;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,7 +21,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Register extends AppCompatActivity {
-    private CheckBox alertCheckBox;
 
     @Override
 
@@ -32,17 +29,12 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         Button workingRegister = findViewById(R.id.RegisterButton);
         CheckBox EULABox = findViewById(R.id.checkBoxEULA);
-        alertCheckBox = (CheckBox) findViewById(R.id.checkBoxEULA);
-        alertCheckBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder EULAtxt = new AlertDialog.Builder(Register.this);
-                EULAtxt.setMessage(R.string.EULAcontents);
-                AlertDialog title = EULAtxt.create();
-                title.setTitle(getString(R.string.eulaAlert));
-                title.show();
-            }
-
+        EULABox.setOnClickListener(v -> {
+            AlertDialog.Builder eula = new AlertDialog.Builder(Register.this);
+            eula.setMessage(R.string.EULAcontents);
+            AlertDialog title = eula.create();
+            title.setTitle(getString(R.string.eulaAlert));
+            title.show();
         });
 
         workingRegister.setOnClickListener(v -> {

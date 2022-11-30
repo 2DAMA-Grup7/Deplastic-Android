@@ -1,6 +1,5 @@
 package org.deplastic.Deplastic.Credentials;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,12 +24,44 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
 
-        if(sp.getBoolean("logged",false)){
-            Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(newIntent);
+        SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
+        JSONObject token = new JSONObject();
+        try {
+            token.put("token", sp.getString("token", ""));
+            token.put("email", sp.getString("email", ""));
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
+        System.out.println(token);
+
+        String url_token = "https://deplastic.netlify.app/.netlify/functions/api/token";
+        JsonObjectRequest tokenRequest = new JsonObjectRequest(Request.Method.POST, url_token, token,
+                response -> {
+                    try {
+                        if (response.getBoolean("auth")) {
+                            Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(newIntent);
+                        } else {
+                            init_form();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }, Throwable::printStackTrace);
+
+        queue.add(tokenRequest);
+
+
+    }
+
+    private void init_form() {
+        SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
         setContentView(R.layout.activity_login);
 
         Button b = findViewById(R.id.LoginButton);
@@ -51,7 +82,6 @@ public class Login extends AppCompatActivity {
             }
 
 
-            RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
             String url = "https://deplastic.netlify.app/.netlify/functions/api/login";
             JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url, credentials,
                     response -> {
@@ -61,11 +91,11 @@ public class Login extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_LONG).show();
                                 Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(newIntent);
-                                sp.edit().putBoolean("logged",true).apply();
-                                sp.edit().putString("email",emailVal);
-                                /*sp.edit().putString("password",passwdVal);
-                                sp.edit().putString("auth",);*/
-                            }else {
+                                sp.edit()
+                                        .putString("token", response.getString("token"))
+                                        .putString("email", emailVal)
+                                        .apply();
+                            } else {
                                 Toast.makeText(getApplicationContext(), "Wrong user or password, try again.", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -77,24 +107,9 @@ public class Login extends AppCompatActivity {
 
         Button R = findViewById(org.deplastic.Deplastic.R.id.toRegisterButton);
         R.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(),Register.class);
+            Intent intent = new Intent(getApplicationContext(), Register.class);
             startActivity(intent);
         });
     }
-
-    private String readfromPref() {
-        SharedPreferences prefs = this.getSharedPreferences("general_settings", Context.MODE_PRIVATE);
-        String lanSettings = prefs.getString("Credentials", null);
-
-        return lanSettings;
-    }
-
-    private void savetoPref(JSONObject response) {
-        SharedPreferences sharedpref = getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedpref.edit();
-        editor.putString("Credentials", response.toString());
-
-        editor.apply();}
 }
-
 
