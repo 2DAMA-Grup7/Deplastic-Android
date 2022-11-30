@@ -27,7 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class TendaFragment extends Fragment {
+public class TendaFragment extends Fragment implements Adapter.ItemClickListener {
 
     private TendaViewModel mViewModel;
 
@@ -68,6 +68,7 @@ public class TendaFragment extends Fragment {
                         Manager = new LinearLayoutManager(getContext());
                         recyclerView.setLayoutManager(Manager);
                         adapter = new Adapter(ImgUrl,productName, getContext());
+                        adapter.setClickListener(this);
                         recyclerView.setAdapter(adapter);
 
 
@@ -87,6 +88,11 @@ public class TendaFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(TendaViewModel.class);
         // TODO: Use the ViewModel
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getContext(), "You clicked " + adapter.getItemId(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
     }
 
 }

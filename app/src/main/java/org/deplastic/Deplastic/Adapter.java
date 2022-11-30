@@ -18,6 +18,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     ArrayList<String> urls;
     ArrayList<String> names;
     Context context;
+    private static ItemClickListener mClickListener;
+
     //constructor
     public Adapter(ArrayList<String> ImgUrl,ArrayList<String> Names, Context context_)
     {
@@ -26,7 +28,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         this.context = context_;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         private ImageView image;
         private TextView name;
@@ -36,8 +38,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             super(v);
             image =(ImageView)v.findViewById(R.id.img);
             name=(TextView)v.findViewById(R.id.ProductName) ;
+            itemView.setOnClickListener(this);
         }
 
+
+        @Override
+        public void onClick(View view) {
+            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+        }
 
         public ImageView getImage(){ return this.image;}
         public TextView getName(){return this.name;}
@@ -55,14 +63,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position)
     {
-        System.out.println(names.get(position));
-
-        holder.getName().setText(names.get(position));
-
         Glide.with(this.context)
                 .load(urls.get(position))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.getImage());
+
+        holder.getName().setText(names.get(position));
 
     }
 
@@ -70,5 +76,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public int getItemCount()
     {
         return urls.size();
+    }
+
+    // allows clicks events to be caught
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    public interface ItemClickListener {
+        void onItemClick(View view, int position);
     }
 }
